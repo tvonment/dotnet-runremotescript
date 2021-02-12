@@ -9,45 +9,36 @@ using Newtonsoft.Json;
 using System.Management.Automation;
 using System.Management.Automation.Runspaces;
 using System.Security;
-namespace WebApplication1.Controllers
+using RunRemotePowershell.Models;
+using System.Reflection;
+
+namespace RunRemotePowershell.Controllers
 {
     [ApiController]
     [Route("api/v1/[controller]")]
-    public class RunRemoteScriptController: ControllerBase
+    public class CreateUserController : ControllerBase
     {
-        private readonly ILogger<RunRemoteScriptController> _logger;
+        private readonly ILogger<CreateUserController> _logger;
 
-        public RunRemoteScriptController(ILogger<RunRemoteScriptController> logger)
+        public CreateUserController(ILogger<CreateUserController> logger)
         {
             _logger = logger;
         }
 
-        [HttpGet]
-        public string Get()
-        {
-            var scriptParams = new Dictionary<string, string>();
-            scriptParams.Add("firstname", "Hans");
-            scriptParams.Add("lastname", "Muster");
-            scriptParams.Add("logonname", "hans.muster");
-            scriptParams.Add("email", "hans.muster@test.com");
-            scriptParams.Add("manager", "Some Dude");
-            scriptParams.Add("password", "TopSecret");
-            scriptParams.Add("container", "myContainer");
-            scriptParams.Add("displayname", "Hans Muster");
-            scriptParams.Add("exchangeserver", "some cool Link to the exchange");
-
-            return RunRemoteScript(scriptParams);
-        }
-
         [HttpPost]
-        public string Post([FromBody] dynamic paramslist)
+        public string Post([FromBody] User user)
         {
-            var data = JsonConvert.DeserializeObject<Dictionary<string, string>>(paramslist.ToString());
             var scriptParams = new Dictionary<string, string>();
-            foreach (var item in data)
+            PropertyInfo[] properties = typeof(User).GetProperties();
+            foreach (PropertyInfo property in properties)
             {
-                scriptParams.Add(item.Key, item.Value.ToString());
-
+                if (property.GetValue(user) != null)
+                {
+                    scriptParams.Add(property.Name, property.GetValue(user).ToString());
+                } else
+                {
+                    scriptParams.Add(property.Name, "");
+                }
             }
 
             return RunRemoteScript(scriptParams);
@@ -77,6 +68,9 @@ namespace WebApplication1.Controllers
                 // execute the script and await the result.                
                 var output = ps.Invoke();
 
+                // print the resulting pipeline objects to the console.
+
+
                 foreach (var item in output)
                 {
                     Console.WriteLine(item.ToString());
@@ -87,7 +81,7 @@ namespace WebApplication1.Controllers
 
             string responseMessage = string.IsNullOrEmpty(outputString)
                 ? "NO OUTPUT"
-                : $"Connect to {Environment.GetEnvironmentVariable("ScriptHost")} as {Environment.GetEnvironmentVariable("User")} with OUTPUT:  \n\n{outputString}";
+                : $"Connect to {Environment.GetEnvironmentVariable("ScriptHost")} as {Environment.GetEnvironmentVariable("User")} with OUTPUT: \n\n{outputString}";
 
             return responseMessage;
 
@@ -106,6 +100,4 @@ namespace WebApplication1.Controllers
             }
         }
     }
-
-
 }

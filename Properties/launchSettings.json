@@ -12,7 +12,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "weatherforecast",
+      "launchUrl": "api/v1/runremotescript",
       "environmentVariables": {
         "Password": "Pa$$w0rd1234",
         "ScriptPath": "C:\\\\Users\\\\Thomas\\\\Powershell\\\\test.ps1",
@@ -26,7 +26,11 @@
       "launchBrowser": true,
       "launchUrl": "api/v1/runremotescript",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "Password": "Pa$$w0rd1234",
+        "ScriptPath": "C:\\\\Users\\\\Thomas\\\\Powershell\\\\test.ps1",
+        "User": "Thomas",
+        "ScriptHost": "20.71.174.206"
       },
       "applicationUrl": "https://localhost:5001;http://localhost:5000"
     },
