@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "7HTxBSYPS0q+3pCgsJ31P1V8obN4fbWi85x9V4Wn21bTsVcp1+gO2++74MXHZLqw8/aHnJ77y+wFwFXUEDB1zg==",
+  "dgSpecHash": "SzXY0IVcw9jAU6p6zW/tD6TqhWHLhIrztQNajvdthvWz9WE3hzv7KAMSjfkNFXWusMSr074fAsZ6oYOxroMm5A==",
   "success": true,
   "projectFilePath": "C:\\Users\\thomas\\source\\repos\\WebApplication1\\RunRemotePowershell.csproj",
   "expectedPackageFiles": [
@@ -11,6 +11,7 @@
     "C:\\Users\\thomas\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.1\\microsoft.netcore.platforms.3.1.1.nupkg.sha512",
     "C:\\Users\\thomas\\.nuget\\packages\\microsoft.powershell.coreclr.eventing\\7.0.5\\microsoft.powershell.coreclr.eventing.7.0.5.nupkg.sha512",
     "C:\\Users\\thomas\\.nuget\\packages\\microsoft.powershell.native\\7.0.0\\microsoft.powershell.native.7.0.0.nupkg.sha512",
+    "C:\\Users\\thomas\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.10.9\\microsoft.visualstudio.azure.containers.tools.targets.1.10.9.nupkg.sha512",
     "C:\\Users\\thomas\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\thomas\\.nuget\\packages\\microsoft.win32.registry.accesscontrol\\4.7.0\\microsoft.win32.registry.accesscontrol.4.7.0.nupkg.sha512",
     "C:\\Users\\thomas\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
